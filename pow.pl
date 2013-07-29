@@ -1,4 +1,5 @@
-my @all = qw/ a b c d e f /;
+#my @all = qw/ a b c d e f /;
+my @all = qw/ a b c /;#d e f /;
 
 &power_set( @all );
 
