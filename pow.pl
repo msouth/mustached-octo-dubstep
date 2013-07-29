@@ -4,6 +4,7 @@ my @all = qw/ a b c d e f /;
 
 sub power_set {
     my @all = @_;
+    my $size = scalar (@all); # I know there should be 2**n, so I'm saving so I can check 
     #my @sets = [];
     my @sets = ([]);
     #ignore the empty set?
@@ -19,5 +20,6 @@ sub power_set {
         }
         push @sets, @new_sets;
     }
+    print "original size: $size, 2**that = ". 2**$size. ", power set size is ", scalar @sets, $/; 
     print Dumper( \@sets ); use Data::Dumper;
 }
