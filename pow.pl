@@ -6,6 +6,7 @@ use warnings;
 #&power_set( @all );
 
 print Dumper(\[ &grab_em(7, apple=>7) ]); use Data::Dumper;
+# passed test one!
 
 sub power_set {
     my @all = @_;
