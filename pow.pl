@@ -61,7 +61,7 @@ sub grab_em {
         # depending on data might check the total as we go and jump
         # out if it crosses total and we don't allow negative weights.
         # all of this rather than check as we go before 
-        $total += $weight{ $_ } for @$possibe;
+        $total += $weight{ $_ } for @$possible;
         if ($total == $target) {
             #we have a winner
             push @solutions, $possible;
