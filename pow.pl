@@ -47,17 +47,24 @@ sub grab_em {
     my @sets_of_foods  = &power_set( @foods );
     foreach my $possible (@sets_of_foods) {
         my $total = 0;
-        # in the case of natural number inputs, we can
+        # in the case of natural number (positive integer) inputs, we can
         # discard any set that has more elements than 
         # $target, since we know from my assumption above
         # that they are at least 1;
+        # next if scalar @$possible > $target;
+
+        # 
         while (@$possible) {
             my $food = shift @$possible;
             $total += $weight{ $food };
             # we could jump out here (labeling the foreach and using next LABEL)
             # if the total is over $target, as long as we are not allowing
             # helium balloons.  So, in case negative weights are desired, we can 
-             
+            # go ahead and continue to the end of this independently of 
+            # whether we've crossed the $target.  
+            #
+            # why did I while this--I've precomputed all the subsets, this 
+            # woudl be more straightfoward with a for.
         }
     }
 }
