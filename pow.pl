@@ -1,3 +1,5 @@
+use strict;
+use warnings;
 #my @all = qw/ a b c d e f /;
 #my @all = qw/ a b c /;#d e f /;
 
@@ -36,13 +38,13 @@ sub grab_em {
     foreach my $key ( keys %weight ) {
         # get rid of the food if the value is greater than the
         # target--saves us a power of two worth of checks
-        delete $candidate{$key} if $candidate{$key} > $target;
+        delete $weight{$key} if $weight{$key} > $target;
         # zero-weight foods are not interesting--if people
         # really want them, we can compute the solution without
         # them, then add the power set of them to every regular 
         # solution.  Probably people don't want them, we might
         # even die here calling it bad data.
-        delete $candidate{$key} unless $candidate{$key};
+        delete $weight{$key} unless $weight{$key};
     }
 
     my @foods = keys %weight;
