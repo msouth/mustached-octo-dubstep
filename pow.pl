@@ -7,6 +7,23 @@ use warnings;
 
 print Dumper(\[ &grab_em(7, apple=>7) ]); use Data::Dumper;
 # passed test one!
+my @tests = ( 
+{
+apple => 3,
+banana => 4,
+},
+
+{
+apple => 3,
+banana => 3,
+coconut => 1,
+da_other_fruit => 1,
+}
+);
+
+foreach my $test (@tests) {
+    print "got ", Dumper( grab_em(7,%$test) ) , 'from ', Dumper( $test );
+}
 
 sub power_set {
     my @all = @_;
