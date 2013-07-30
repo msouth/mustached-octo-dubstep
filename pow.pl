@@ -5,7 +5,7 @@ use warnings;
 
 #&power_set( @all );
 
-print +Dumper \[ &grab_em(7, apple=>7) ]; use Data::Dumper;
+print Dumper(\[ &grab_em(7, apple=>7) ]); use Data::Dumper;
 
 sub power_set {
     my @all = @_;
