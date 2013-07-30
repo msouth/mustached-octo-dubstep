@@ -1,24 +1,33 @@
 use strict;
 use warnings;
+use Data::Dumper;
 #my @all = qw/ a b c d e f /;
 #my @all = qw/ a b c /;#d e f /;
 
 #&power_set( @all );
 
-print Dumper(\[ &grab_em(7, apple=>7) ]); use Data::Dumper;
+#print Dumper(\[ &grab_em(7, apple=>7) ]); use Data::Dumper;
 # passed test one!
 my @tests = ( 
-{
-apple => 3,
-banana => 4,
-},
+    {
+        apple => 3,
+        banana => 4,
+    },
 
-{
-apple => 3,
-banana => 3,
-coconut => 1,
-da_other_fruit => 1,
-}
+    {
+        apple => 3,
+        banana => 3,
+        coconut => 1,
+        da_other_fruit => 1,
+    } ,
+    {
+        three => 3,
+        also_three => 3,
+        another_one => 1,
+        one => 1,
+        seven => 7,
+        six => 6,
+    }
 );
 
 foreach my $test (@tests) {
