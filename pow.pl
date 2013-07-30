@@ -1,7 +1,9 @@
 #my @all = qw/ a b c d e f /;
-my @all = qw/ a b c /;#d e f /;
+#my @all = qw/ a b c /;#d e f /;
 
-&power_set( @all );
+#&power_set( @all );
+
+print Dumper \[ &grab_em(7, apple=>7) ];
 
 sub power_set {
     my @all = @_;
@@ -30,6 +32,7 @@ sub grab_em {
     my $target = shift;
     my %weight = @_;
 
+    my @solutions;
     foreach my $key ( keys %weight ) {
         # get rid of the food if the value is greater than the
         # target--saves us a power of two worth of checks
@@ -53,18 +56,14 @@ sub grab_em {
         # that they are at least 1;
         # next if scalar @$possible > $target;
 
-        # 
-        while (@$possible) {
-            my $food = shift @$possible;
-            $total += $weight{ $food };
-            # we could jump out here (labeling the foreach and using next LABEL)
-            # if the total is over $target, as long as we are not allowing
-            # helium balloons.  So, in case negative weights are desired, we can 
-            # go ahead and continue to the end of this independently of 
-            # whether we've crossed the $target.  
-            #
-            # why did I while this--I've precomputed all the subsets, this 
-            # woudl be more straightfoward with a for.
+        # depending on data might check the total as we go and jump
+        # out if it crosses total and we don't allow negative weights.
+        # all of this rather than check as we go before 
+        $total += $weight{ $_ } for @$possibe;
+        if ($total == $target) {
+            #we have a winner
+            push @solutions, $possible;
         }
     }
+    return @solutions;
 }
